@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>blender 服を作る方法</title>
+
+  <style>
+    /* 基本全体のスタイル */
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem;
+      background-color: #f4f4f4;
+    }
+
+    /* 見出しのスタイル */
+    h1, h2 {
+      color: #333;
+    }
+
+    h1 {
+      border-bottom: 2px solid #888;
+      padding-bottom: 0.5rem;
+    }
+
+    /* セクションごとの箱（ステップ） */
+    .step {
+      background: white;
+      border-left: 5px solid #007ACC;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* 表のスタイル */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f0f0f0;
+    }
+
+    /* 画像を綺麗に表示するクラス */
+    .img-responsive {
+      max-width: 100%;     /* 親要素に合わせて縮小可 */
+      height: auto;        /* アスペクト比を保ったまま */
+      display: block;
+      margin: 1rem 0;
+      border: 1px solid #ccc;  /* 枠線（オプション） */
+      border-radius: 8px;      /* 角を丸める（任意） */
+    }
+
+    .highlight {
+    background-color: #c8c8c8;  /* 明るい黄色 */
+    padding: 0 0.3em;           /* 文字の左右に少し余白 */
+    border-radius: 4px;         /* 少し角丸に */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ページタイトル（自由に変更可） -->
+  <h1>✅ blender 服を作る方法</h1>
+
+  <!-- セクション：目的などの概要 -->
+  <div class="step">
+    <h2>📌 概要</h2>
+    <p>blenderを使って作る時の基本的で簡単な方法を説明します。</p>
+  </div>
+
+  <!-- セクション：手順や説明 -->
+  <div class="step">
+    <h2>🔹 目次</h2>
+    <ol>
+      <li><a href="#section1">服の元となる原型の作り方</a></li>
+      <li><a href="#section2">超重要：シェイプキーをなくしミラーをつける</a></li>
+      <li><a href="#section3">ミラーの適用</a></li>
+      <li><a href="#section4">ウェイトペイント：ボーンに追従させる</a></li>
+      <li><a href="#section5">全てのオブジェクトを統合する</a></li>
+    </ol>
+  </div>
+
+  <!-- セクション：画像を挿入する例 -->
+  <div class="step">
+    <h2 id="section1">1, 服の元となる原型の作り方</h2>
+    <p>
+        原型を作ると言っても、体を複製して原型を作成します。<br>
+        まず、オブジェクトを選択し編集モードにし、作りたい服の上にカーソルを置く。<br>
+        そして、キーボードの<span class="highlight">&lt;L&gt;</span>を押すことでいい感じに選択してくれる。
+    </p>
+    <img src="senntaku L.png" width="950" alt="説明文" class="img-responsive">
+    <p>
+        この状態で<span class="highlight">&lt;Shift&gt;</span>+<span class="highlight">&lt;D&gt;</span>を押し、すぐに<span class="highlight">&lt;S&gt;</span>押しマウスを動かすことで複製しサイズを大きくすることができるので、
+        体より少し大きくなるように調整する。<br>下の画像の赤丸のように隙間ができていればOK!!
+    </p>
+    <img src="huku gennkei.png" width="950" alt="説明文" class="img-responsive">
+    <p>
+        服の原型を選択している状態で、<span class="highlight">&lt;右クリック&gt;</span>→<span class="highlight">&lt;分離&gt;</span>→<span class="highlight">&lt;選択&gt;</span>の順番で押す。
+        こうすることで、体と服が別のオブジェクトになる。
+    </p>
+    <img src="bunnri.png" width="950" alt="説明文" class="img-responsive">
+    <p>
+        一度オブジェクトモードにし、服の原型だけ選択して編集モードにする。そして、自分の作る服にいらない部分を選択してキーボードの<span class="highlight">&lt;Delete&gt;</span>で削除する。
+    </p>
+    <p>
+        ※点を選択したりするときのおすすめのやり方<br>
+        ・右上の四角と丸のマークを画像のようにすると選択しているオブジェクト以外が透けて見え、重なっている部分も同時に選択できるようになるので楽になることがある。   
+    </p>
+    <img src="osusume1.png" alt="説明文" class="img-responsive">
+    <img src="osusume3.png" width="950" alt="説明文" class="img-responsive">
+    <p>
+        ・下の画像に赤丸されている同じく右上にある物のx,y,z,-yなどを押すことで、その方向からまっすぐ見ることができるので楽になることがある。
+    </p>
+    <img src="osusume2.png" width="950" alt="説明文" class="img-responsive">
+  </div>
+
+  <!-- セクション：設定表など -->
+  <div class="step">
+    <h2 id="section2">2, 超重要：シェイプキーをなくしミラーをつける</h2>
+    <p>
+        服の原型のオブジェクトを選択する。そして、ミラーという左右対称に編集できるモデファイヤーをつけるためには、服の原型を右半分だけにする必要があるので、下の画像のように左側の頂点だけ選択し(真ん中にある頂点は選択しない)
+        <span class="highlight">&lt;Delete&gt;</span>で削除する。
+    </p>
+    <img src="hannbunn.png" width="950" alt="説明文" class="img-responsive">
+    <p>
+        そして、残った右半分の服オブジェクトを選択して、右下の緑の逆三角形を押し、シェイプキーの右の<span class="highlight">&lt;－&gt;(マイナス)</span>を押してシェイプキーを全てなくす。
+    </p>
+    <img src="syeipuki-.png" width="950" alt="説明文" class="img-responsive">
+    <p>
+        下の画像のように全部なくなればOK!!(※上の画像で服の左半分あるけど気にしないで)   
+    </p>
+    <img src="nasi.png" alt="説明文" class="img-responsive">
+    <p>
+        最後に、服オブジェクトを選択した状態で右下の青レンチマークを押して<span class="highlight">&lt;モデファイヤーを追加&gt;</span>を選択、<span class="highlight">&lt;ミラー&gt;</span>を押すことでミラーモデファイヤーをつけることができる。    
+    </p>
+    <img src="mirror.png" width="950" alt="説明文" class="img-responsive">
+    <img src="mirror2.png" width="950" alt="説明文" class="img-responsive">
+    <p>
+        下の画像のように、右側に頂点・辺・面が表示され選択できるようになっていて、左側には表示されていなければOK!!
+    </p>
+    <img src="mirror3.png" width="950" alt="説明文" class="img-responsive">
+    <p>
+        これで楽に作業ができるようになったので、後は自分で好きな形に服を編集していこう！<br><br>
+        ※頂点を動かす時に使える便利機能<br>
+        画面上にある⦿これを押すことで、頂点を動かす時に周囲の頂点に影響を与えながら動かすことができます。(⦿の右にある下矢印を押すと影響の与え方を変えれます。スムーズがおすすめ！)
+    </p>
+    <img src="kore.png" alt="説明文" class="img-responsive">
+    <img src="bennri.png" alt="説明文" class="img-responsive">
+    <p>
+        実際に使う時は、頂点を選択してキーボードの<span class="highlight">&lt;G&gt;</span>で移動させるのですが、下のが画像で赤矢印で指している灰色の円が影響を与える範囲で、これが画面に無い場合があります。<br>
+        ですが、<span class="highlight">&lt;マウスホイールの上下&gt;</span>で円のサイズを変えることができるので、マウスホイールをコロコロしてみましょう。
+    </p>
+    <img src="osu.png" width="950" alt="説明文" class="img-responsive">
+  </div>
+
+  <!-- セクション：確認事項 -->
+  <div class="step">
+    <h2 id="section3">3, ミラーの適用</h2>
+    <p>
+        服が出来たらオブジェクトモードで服を選択して、右下の青レンチマークを押してミラーの右にある下矢印を押して適応を押すことで適応できる。
+    </p>
+    <img src="tekiou.png" width="950" alt="説明文" class="img-responsive">
+    <p>
+        下の画像のようにモデファイヤーの欄からミラーがなくなればOK!!
+    </p>
+    <img src="tekiou2.png" width="28%" alt="説明文" class="img-responsive">
+  </div>
+
+  <div class="step">
+    <h2 id="section4">4, ウェイトペイント：ボーンに追従させる</h2>
+    <p>
+        まず体を選択し、次に服を<span class="highlight">&lt;Shift&gt;</span>+<span class="highlight">&lt;左クリック&gt;</span>で選択する。<br>
+        ※絶対に体から選択して服を選択すること！順番が大事！<br>
+        左上のモード切り替えから「ウェイトペイント」を選択
+    </p>
+    <img src="wait1.png" width="950" alt="説明文" class="img-responsive">
+    <p>
+        画面上部にある<span class="highlight">&lt;ウェイト&gt;</span>を押して<span class="highlight">&lt;ウェイト転送&gt;</span>を選択する(※1)。左下にある<span class="highlight">&lt;メッシュデータの転送&gt;</span>
+        を押すことでメッシュデータを転送が展開される(※2)。
+    </p>
+    <img src="wait2.png" width="950" alt="説明文" class="img-responsive">
+    <img src="wait3.png" width="950" alt="説明文" class="img-responsive">
+    展開されたメッシュデータ転送を下のように変更します。
+    
+    <table>
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>設定</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>転送元レイヤー</td>
+          <td>名前（By Name）</td>
+        </tr>
+        <tr>
+          <td>対象レイヤー</td>
+          <td>全レイヤー（All Layers）</td>
+        </tr>
+        <tr>
+          <td>マッピング方式</td>
+          <td>最近接面の補間（Nearest Face Interpolated）</td>
+        </tr>
+      </tbody>
+    </table>
+    <img src="wait4.png" alt="説明文" class="img-responsive">
+    <p>
+        こうすることで体にあったウェイトが服にコピーされボーンに追従するときほぼ完璧に動いてくれる。(※ほぼ完璧な理由は、もしかしたら変になる可能性があるから。変になった時に細かく直さないといけなくなる。)
+    </p>
+    <br>
+    <h3>※ちゃんと動くかの確認方法</h3>
+    <p>
+        オブジェクトモードでボーンを選択して、左上のモード切り替えから「ポーズモード」にする。
+    </p>
+    <img src="kakuninn.png" width="950" alt="説明文" class="img-responsive">
+    <p>
+        動かしたいボーンを選択して<span class="highlight">&lt;R&gt;</span>を押すことで角度を変えて確認できる。
+    </p>
+    <img src="kakuninn2.png" width="950" alt="説明文" class="img-responsive">
+  </div>
+
+  <div class="step">
+    <h2 id="section5">5, 全てのオブジェクトを統合する</h2>
+    <p>
+        最後に服を作り終わったら、全てのオブジェクトを一つに統合します。<br>
+        <span class="highlight">&lt;Shift&gt;</span>+<span class="highlight">&lt;左クリック&gt;</span>で全てのオブジェクトを選択し、<span class="highlight">&lt;右クリック&gt;</span>→<span class="highlight">&lt;統合&gt;</span>の順番に押せば完了です。
+    </p>
+    <img src="tougou__.png" width="950" alt="説明文" class="img-responsive">
+  </div>
+</body>
+</html>
